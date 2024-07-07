@@ -1,5 +1,7 @@
 **Xslt Reactor** - a simple XSLT editor. The application allows you to edit XSL and XML files and view the transformation results using the integrated WebView.
 
+![visual interface](https://github.com/Rckov/Xslt-Reactor/blob/master/doc/Picture.png)
+
 ## 📦 Installation
 1. Ensure you have .NET SDK version 6.0 or higher installed.
 2. Clone the repository:
