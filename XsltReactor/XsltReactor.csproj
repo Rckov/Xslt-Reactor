@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+   <PropertyGroup Label="Globals" />
+
+   <PropertyGroup>
+      <OutputType>WinExe</OutputType>
+      <TargetFramework>net6.0-windows</TargetFramework>
+      <Nullable>enable</Nullable>
+      <ImplicitUsings>enable</ImplicitUsings>
+      <UseWPF>true</UseWPF>
+      <LangVersion>preview</LangVersion>
+      <ApplicationIcon>Resources\iconapp.ico</ApplicationIcon>
+   </PropertyGroup>
+
+   <ItemGroup>
+     <None Remove="Resources\Examples\Template.txt" />
+     <None Remove="Resources\Fonts\Segoe MDL2 Assets.ttf" />
+     <None Remove="Resources\Highlightings\VSCodeLight.xshd" />
+     <None Remove="Resources\iconapp.ico" />
+   </ItemGroup>
+
+   <ItemGroup>
+      <PackageReference Include="AvalonEdit" Version="6.3.0.90" />
+      <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2592.51" />
+      <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.122" />
+      <PackageReference Include="WPF-UI" Version="3.0.4" />
+   </ItemGroup>
+
+   <ItemGroup>
+     <Resource Include="Resources\Fonts\Segoe MDL2 Assets.ttf" />
+     <EmbeddedResource Include="Resources\Examples\Template.txt" />
+     <EmbeddedResource Include="Resources\Highlightings\VSCodeLight.xshd" />
+     <ProjectReference Include="..\XsltReactor.Transform\XsltReactor.Transform.csproj" />
+     <Resource Include="Resources\iconapp.ico" />
+   </ItemGroup>
+
+</Project>

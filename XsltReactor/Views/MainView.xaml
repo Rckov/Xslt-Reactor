@@ -1,0 +1,181 @@
+﻿<ui:FluentWindow x:Class="XsltReactor.Views.MainView"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:avalon="http://icsharpcode.net/sharpdevelop/avalonedit"
+                 xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+                 xmlns:Wpf="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
+                 xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                 xmlns:bh="clr-namespace:XsltReactor.Infrastructure.Behaviors"
+                 xmlns:wm="clr-namespace:XsltReactor.ViewModels"
+                 Title="XSLT Redactor"
+    Height="650"
+    Width="1000"
+    WindowStartupLocation="CenterScreen">
+
+   <!-- Data Context -->
+   <!-- Set the DataContext of the window to the MainViewModel -->
+   <Window.DataContext>
+      <wm:MainViewModel />
+   </Window.DataContext>
+
+   <!-- Resources for Reusable Styles -->
+   <!-- Define reusable styles and context menus for the application -->
+   <Window.Resources>
+      <ResourceDictionary>
+         <ResourceDictionary.MergedDictionaries>
+            <ResourceDictionary Source="Styles/MainStyles.xaml" />
+            <ResourceDictionary Source="Styles/SerachPanelStyles.xaml" />
+         </ResourceDictionary.MergedDictionaries>
+      </ResourceDictionary>
+   </Window.Resources>
+
+   <DockPanel>
+
+      <!-- Title Bar -->
+      <!-- Custom title bar with application icon -->
+      <ui:TitleBar Title="XSLT Reactor" DockPanel.Dock="Top">
+         <ui:TitleBar.Icon>
+            <ui:ImageIcon Source="../Resources/iconapp.ico" />
+         </ui:TitleBar.Icon>
+      </ui:TitleBar>
+
+      <!-- Menu -->
+      <!-- Main menu with file operations and settings -->
+      <Menu BorderThickness="0 1 0 1" BorderBrush="#FFEAEAEA" DockPanel.Dock="Top">
+         <ui:MenuItem>
+            <ui:MenuItem.Icon>
+               <ui:FontIcon Glyph="&#xe8e5;" FontFamily="{StaticResource SegoeFluentIcons}" />
+            </ui:MenuItem.Icon>
+            <ui:MenuItem Header="Open XSL file" Command="{Binding OpenFile}" CommandParameter=".xsl" />
+            <ui:MenuItem Header="Open XML file" Command="{Binding OpenFile}" CommandParameter=".xml" />
+            <Separator />
+            <ui:MenuItem Header="Create template" Command="{Binding OpenTemplate}" CommandParameter="XsltReactor.Resources.Examples.Template.txt" />
+         </ui:MenuItem>
+         <ui:MenuItem>
+            <ui:MenuItem.Icon>
+               <ui:FontIcon Glyph="&#xe74e;" FontFamily="{StaticResource SegoeFluentIcons}" />
+            </ui:MenuItem.Icon>
+         </ui:MenuItem>
+         <Separator />
+         <ui:MenuItem Command="ApplicationCommands.Undo" Header="">
+            <ui:MenuItem.Icon>
+               <ui:FontIcon Glyph="&#xe7a7;" FontFamily="{StaticResource SegoeFluentIcons}" />
+            </ui:MenuItem.Icon>
+         </ui:MenuItem>
+         <ui:MenuItem Command="ApplicationCommands.Redo" Header="">
+            <ui:MenuItem.Icon>
+               <ui:FontIcon Glyph="&#xe7a6;" FontFamily="{StaticResource SegoeFluentIcons}" />
+            </ui:MenuItem.Icon>
+         </ui:MenuItem>
+         <Separator />
+         <ComboBox x:Name="FontFamilyComboBox" ItemsSource="{Binding Source={x:Static Fonts.SystemFontFamilies}}" SelectedIndex="7" />
+         <ComboBox x:Name="FontSizeComboBox" SelectedIndex="4" ItemsSource="{StaticResource FontSizes}" />
+         <Separator />
+         <!--<ui:MenuItem>
+            <ui:MenuItem.Icon>
+               <ui:FontIcon Glyph="&#xe749;" FontFamily="{StaticResource SegoeFluentIcons}" />
+            </ui:MenuItem.Icon>
+         </ui:MenuItem>-->
+         <ui:MenuItem>
+            <ui:MenuItem.Icon>
+               <ui:FontIcon Glyph="&#xe713;" FontFamily="{StaticResource SegoeFluentIcons}" />
+            </ui:MenuItem.Icon>
+         </ui:MenuItem>
+      </Menu>
+
+      <!-- Status Bar -->
+      <!-- Status bar at the bottom of the window -->
+      <StatusBar DockPanel.Dock="Bottom" Padding="5 0 0 0">
+         <StatusBarItem Content=" " />
+      </StatusBar>
+
+      <!-- Main Grid Layout -->
+      <!-- Main grid layout with three columns: text editors and a WebView -->
+      <Grid>
+         <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition />
+         </Grid.ColumnDefinitions>
+
+         <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+               <RowDefinition Height="60*" />
+               <RowDefinition Height="Auto" />
+               <RowDefinition Height="35*" />
+            </Grid.RowDefinitions>
+
+            <!-- XSL Editor Section -->
+            <!-- Section for editing XSL files -->
+            <Grid Grid.Row="0">
+               <Grid>
+                  <Grid.RowDefinitions>
+                     <RowDefinition Height="Auto" />
+                     <RowDefinition />
+                  </Grid.RowDefinitions>
+
+                  <Grid Grid.Row="0">
+                     <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto" />
+                     </Grid.ColumnDefinitions>
+
+                     <TextBlock Text="{Binding XslFile}" Grid.Column="0" Style="{StaticResource HeaderTextBlock}" />
+                     <TextBlock Text="XSL" Grid.Column="1" Style="{StaticResource HeaderTextBlock}" HorizontalAlignment="Right" />
+                  </Grid>
+
+                  <avalon:TextEditor Grid.Row="1" x:Name="XSLEditor">
+                     <i:Interaction.Behaviors>
+                        <bh:TextEditorFoldingBehavior />
+                        <bh:TextEditorTextBehavior Text="{Binding XslText, Mode=TwoWay}" FileName="{Binding XslFile}" />
+                        <bh:TextEditorHighlightingBehavior HighlightingDefinition="XsltReactor.Resources.Highlightings.VSCodeLight.xshd" />
+                     </i:Interaction.Behaviors>
+                  </avalon:TextEditor>
+               </Grid>
+            </Grid>
+
+            <!-- Grid Splitter -->
+            <!-- Splitter between XSL and XML editors -->
+            <GridSplitter Grid.Row="1" Height="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+
+            <!-- XML Editor Section -->
+            <!-- Section for editing XML files -->
+            <Grid Grid.Row="2">
+               <Grid>
+                  <Grid.RowDefinitions>
+                     <RowDefinition Height="Auto" />
+                     <RowDefinition />
+                  </Grid.RowDefinitions>
+
+                  <Grid Grid.Row="0">
+                     <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto" />
+                     </Grid.ColumnDefinitions>
+
+                     <TextBlock Text="{Binding XmlFile}" Grid.Column="0" Style="{StaticResource HeaderTextBlock}" />
+                     <TextBlock Text="XML" Grid.Column="1" Style="{StaticResource HeaderTextBlock}" HorizontalAlignment="Right" />
+                  </Grid>
+
+                  <avalon:TextEditor Grid.Row="1" x:Name="XMLEditor">
+                     <i:Interaction.Behaviors>
+                        <bh:TextEditorFoldingBehavior />
+                        <bh:TextEditorTextBehavior Text="{Binding XmlText, Mode=TwoWay}" FileName="{Binding XmlFile}" />
+                        <bh:TextEditorHighlightingBehavior HighlightingDefinition="XsltReactor.Resources.Highlightings.VSCodeLight.xshd" />
+                     </i:Interaction.Behaviors>
+                  </avalon:TextEditor>
+               </Grid>
+            </Grid>
+         </Grid>
+
+         <!-- Vertical Grid Splitter -->
+         <!-- Splitter between text editors and WebView -->
+         <GridSplitter Grid.Column="1" Width="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+
+         <!-- WebView2 -->
+         <!-- WebView2 control for displaying web content -->
+         <Wpf:WebView2 Grid.Column="2" x:Name="WebView" />
+      </Grid>
+   </DockPanel>
+</ui:FluentWindow>

@@ -1,0 +1,27 @@
+﻿<xsl:transform version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+	<xsl:param name="Signs"/>
+	<xsl:param name="HasSign"/>
+
+	<xsl:template match="nameRoot">
+      <html>
+         <head>
+			   <style>
+				   * 
+				   {
+					   margin: 0;
+					   padding: 0;
+					   box-sizing: border-box;
+				  
+					   color: black;
+					   font-size: 12px;
+					   font-family: "Times New Roman", Times, serif;
+				   }
+			   </style>
+		   </head>
+		   <body>
+			   <div></div>
+		   </body>
+      </html>
+	</xsl:template>
+</xsl:transform>

@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SyntaxDefinition name="VSCodeLight" extensions=".html;.css" xmlns="http://icsharpcode.net/sharpdevelop/syntaxdefinition/2008">
+   <Color name="Keyword" foreground="#007ACC" />
+   <!-- Darker Blue -->
+   <Color name="Comment" foreground="#6A9955" />
+   <!-- Green -->
+   <Color name="String" foreground="#A31515" />
+   <!-- DarkRed -->
+   <Color name="Number" foreground="#098658" />
+   <!-- DarkGreen -->
+   <Color name="Tag" foreground="#007ACC" />
+   <!-- Darker Blue -->
+   <Color name="Attribute" foreground="#FF0000" />
+   <!-- Red -->
+   <Color name="AttributeValue" foreground="#964b00" />
+   <!-- Darker Blue -->
+   <Color name="CSSProperty" foreground="#800000" />
+   <!-- Maroon -->
+   <Color name="CSSValue" foreground="#098658" />
+   <!-- DarkGreen -->
+
+   <RuleSet>
+      <!-- HTML Syntax -->
+      <Rule color="Tag">
+         &lt;[\w:+\w-]+
+      </Rule>
+      <Rule color="Tag">
+         /&gt;
+      </Rule>
+      <Rule color="Tag">
+         &gt;
+      </Rule>
+      <Rule color="Tag">
+         &lt;\/[\w:-]+&gt;
+      </Rule>
+      <Rule color="Tag">
+         &lt;\w+\s*\/&gt;
+      </Rule>
+      <Rule color="Attribute">
+         \b\w+(?=\s*=)
+      </Rule>
+      <Rule color="AttributeValue">
+         =("[^"]*"|'[^']*')
+      </Rule>
+      <Rule color="Comment">
+         &lt;!--.*?--&gt;
+      </Rule>
+
+      <!-- CSS Syntax -->
+      <Rule color="CSSProperty">
+         \b[a-zA-Z-]+(?=\s*:)
+      </Rule>
+      <Rule color="CSSValue">
+         :[^;]+;
+      </Rule>
+      <Rule color="Comment">
+         /\*.*?\*/
+      </Rule>
+   </RuleSet>
+</SyntaxDefinition>
