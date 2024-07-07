@@ -7,11 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XsltReactor", "XsltReactor\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XsltReactor.Transform", "XsltReactor.Transform\XsltReactor.Transform.csproj", "{7413869C-4521-433C-A3C6-2ADBB5C906FC}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{FFC69882-95BB-48CB-B89B-A9D5A9224837}"
-	ProjectSection(SolutionItems) = preProject
-		..\Picture.png = ..\Picture.png
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
