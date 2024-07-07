@@ -2,26 +2,6 @@
 
 ![visual interface](https://github.com/Rckov/Xslt-Reactor/blob/master/doc/Picture.png)
 
-## 📦 Installation
-1. Ensure you have .NET SDK version 6.0 or higher installed.
-2. Clone the repository:
-    ```sh
-    git clone https://github.com/Rckov/Xslt-Reactor.git
-    ```
-3. Navigate to the project directory:
-    ```sh
-    cd XsltReactor
-    ```
-4. Restore dependencies and build the project:
-    ```sh
-    dotnet restore
-    dotnet build
-    ```
-5. Run the application:
-    ```sh
-    dotnet run --project XsltReactor
-    ```
-
 ## 🚀 Usage
 - **Open XSL or XML file**: Use the "Open XSL file" or "Open XML file" menu to load files.
 - **Edit code**: Use the text editors to make changes to the XSL and XML files.
