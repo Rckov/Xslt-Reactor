@@ -5,7 +5,12 @@ VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XsltReactor", "XsltReactor\XsltReactor.csproj", "{17850816-1D69-4030-A7E9-5DE9ECEBF635}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XsltReactor.Transform", "XsltReactor.Transform\XsltReactor.Transform.csproj", "{7413869C-4521-433C-A3C6-2ADBB5C906FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XsltReactor.Transform", "XsltReactor.Transform\XsltReactor.Transform.csproj", "{7413869C-4521-433C-A3C6-2ADBB5C906FC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{FFC69882-95BB-48CB-B89B-A9D5A9224837}"
+	ProjectSection(SolutionItems) = preProject
+		..\Picture.png = ..\Picture.png
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
