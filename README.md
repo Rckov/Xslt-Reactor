@@ -4,7 +4,7 @@
 1. Ensure you have .NET SDK version 6.0 or higher installed.
 2. Clone the repository:
     ```sh
-    git clone https://github.com/Rckov/XsltReactor.git
+    git clone https://github.com/Rckov/Xslt-Reactor.git
     ```
 3. Navigate to the project directory:
     ```sh
