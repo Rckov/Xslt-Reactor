@@ -8,9 +8,6 @@
 - **View results**: Transformation results will be displayed in the WebView.
 - **Save changes**: Use the standard save commands to save your changes.
 
-## ⚙️ Configuration
-To build the project on operating systems other than Windows, set the `EnableWindowsTargeting` property to `true` in the `.csproj` files.
-
 ## 📋 Dependencies
 - [AvalonEdit](https://github.com/icsharpcode/AvalonEdit)
 - [Microsoft.Web.WebView2](https://www.nuget.org/packages/Microsoft.Web.WebView2/)
